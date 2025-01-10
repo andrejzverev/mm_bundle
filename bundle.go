@@ -1,13 +1,5 @@
 package bundle
 
-// type IBundle interface {
-// 	CreateBundle(bundleName string) error
-// 	OpenBundle(bundleName string) error
-// 	CloseBundle() error
-// 	AddContent(fileName string, b []byte) error
-// 	GetContent(fileName string) ([]byte, error)
-// }
-
 import (
 	"archive/tar"
 	"bytes"
@@ -24,9 +16,9 @@ type BundleTAR struct {
 }
 
 func (b *BundleTAR) CreateBundle(bundleName string) error {
-	// if b.bundleFile != nil {
-	// 	return fmt.Errorf("can not create bundle already created")
-	// }
+	if b.bundleFile != nil {
+		return fmt.Errorf("can not create bundle already created")
+	}
 
 	file, err := os.Create(bundleName)
 	if err != nil {
